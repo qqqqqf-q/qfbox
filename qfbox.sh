@@ -1,6 +1,4 @@
-#!/bin/bash
 
-# 设置文本颜色
 GREEN="\e[32m"
 NC='\033[0m'
 RED='\033[0;31m'
@@ -9,18 +7,17 @@ CYAN='\033[0;36m'
 PURPLE='\033[0;35m'
 YELLOW='\033[0;33m'
 RESET="\e[0m"
-# 清屏函数
+
 clear_screen() {
     clear
 }
 
-# 显示菜单
+
 show_menu() {
     clear_screen
     echo -e "${CYAN}====================================================================${NC}"
     echo -e "${PURPLE}        清凤多合一工具箱菜单        ${NC}"   
-    echo -e "${RED}  https://github.com/qqqqqf-q/qfbox   ${NC}"
-    echo -e "${CYAN} bash <(curl https://github.com/qqqqqf-q/qfbox/qfbox.sh) && chmod +x qfbox.sh && sudo ./qfbox.sh ${NC}"   
+    echo -e "${RED}  https://github.com/qqqqqf-q/qfbox   ${NC}""   
     echo -e "${CYAN}====================================================================${NC}"
     echo -e "${GREEN}1.${RESET} DD重装系统"
     echo -e "${GREEN}2.${RESET} 综合测试脚本"
@@ -35,7 +32,7 @@ show_menu() {
     echo -e "${CYAN}==================================${NC}"
 }
 
-# DD重装系统子菜单
+
 dd_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -74,7 +71,7 @@ dd_submenu() {
     esac
 }
 
-# 综合测试脚本子菜单
+
 bench_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -112,7 +109,6 @@ bench_submenu() {
     esac
 }
 
-# 性能测试子菜单
 performance_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -150,7 +146,7 @@ performance_submenu() {
     esac
 }
 
-# 流媒体及IP测试子菜单
+
 streaming_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -254,7 +250,7 @@ streaming_submenu() {
     esac
 }
 
-# 测速脚本子菜单
+
 speedtest_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -329,7 +325,7 @@ speedtest_submenu() {
                     mode_flag=""
                 fi
 
-                # 运行 iperf3
+
                 iperf3 -c "$server_ip" $protocol_flag $ip_version_flag $mode_flag -p "$port" -P "$threads" -t "$duration" -w "$window_size"
 
                 exit 0
@@ -337,7 +333,7 @@ speedtest_submenu() {
 
             echo "iperf3 未安装，正在安装..."
 
-            # 确定包管理器
+
             if command -v apt &> /dev/null; then
                 sudo apt update && sudo apt install -y iperf3
             elif command -v yum &> /dev/null; then
@@ -347,7 +343,7 @@ speedtest_submenu() {
                 exit 1
             fi
 
-            # 再次检查安装是否成功
+
             if command -v iperf3 &> /dev/null; then
                 echo "iperf3 安装成功"
                 read -p "选择模式 (1-服务器, 2-客户端): " mode
@@ -372,28 +368,28 @@ speedtest_submenu() {
                 read -p "请输入窗口大小 (默认:[64K]): " window_size
                 window_size=${window_size:-64K}
 
-                # 设置协议参数
+
                 if [[ "$protocol" == "2" ]]; then
                     protocol_flag="-u"
                 else
                     protocol_flag=""
                 fi
 
-                # 设置 IP 版本参数
+
                 if [[ "$ip_version" == "2" ]]; then
                     ip_version_flag="-6"
                 else
                     ip_version_flag=""
                 fi
 
-                # 发送/接收模式
+
                 if [[ "$transfer_mode" == "2" ]]; then
                     mode_flag="--reverse"
                 else
                     mode_flag=""
                 fi
 
-                # 运行 iperf3
+
                 iperf3 -c "$server_ip" $protocol_flag $ip_version_flag $mode_flag -p "$port" -P "$threads" -t "$duration" -w "$window_size"
 
                 exit 0
@@ -412,7 +408,7 @@ speedtest_submenu() {
     esac
 }
 
-# 回程测试子菜单
+
 traceroute_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -446,7 +442,7 @@ traceroute_submenu() {
     esac
 }
 
-# 功能脚本子菜单
+
 function_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -507,7 +503,6 @@ function_submenu() {
                 echo "尝试执行: $cmd"
                 eval "$cmd"
                 
-                # 如果命令成功执行，退出循环
                 if [ $? -eq 0 ]; then
                     echo "命令成功执行!"
                     exit 0
@@ -526,7 +521,7 @@ function_submenu() {
     esac
 }
 
-# 环境安装子菜单
+
 env_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
@@ -592,7 +587,7 @@ env_submenu() {
     esac
 }
 
-# 综合功能脚本子菜单
+
 complex_submenu() {
     clear_screen
     echo -e "${CYAN}==================================${NC}"
