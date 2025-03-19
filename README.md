@@ -1,5 +1,12 @@
 # 清凤Box (qfbox)
-
+全球命令
+```bash
+bash <(curl https://raw.githubusercontent.com/qqqqqf-q/qfbox/refs/heads/main/qfbox.sh) && chmod +x qfbox.sh && sudo ./qfbox.sh
+```
+内地命令(无法使用请使用全球命令)
+```bash
+bash <(curl https://raw.gitcode.com/m0_69356193/qfbox/raw/main/qfbox.sh) && chmod +x qfbox.sh && sudo ./qfbox.sh
+```
 本脚本融合了 **44 项功能**，包含：  
 
 - **系统重装**：4 种方案  
